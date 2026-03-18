@@ -7,23 +7,23 @@ export default function About() {
           <div className="absolute top-0 left-0 w-[62%] rounded-2xl overflow-hidden border border-yellow-600/40 shadow-xl z-10">
             <img
               src="/images/about1.png"
-              alt="Athlete squatting"
-              className="w-full h-[380px] object-cover"
+              alt="gym1"
+              className="w-full h-[380px] object-cover sm:object-fill"
             />
           </div>
 
           <div className="absolute bottom-0 right-0 w-[72%] rounded-2xl overflow-hidden border border-yellow-600/40 shadow-2xl z-20">
             <img
               src="/images/about2.png"
-              alt="Athlete doing pull-ups"
-              className="w-full h-[420px] object-cover"
+              alt="gym2"
+              className="w-full h-[420px] object-cover sm:object-fill"
             />
           </div>
         </div>
 
         <div className="w-full md:w-[55%] flex flex-col gap-6">
           {/* Badge */}
-          <div className="inline-flex w-fit items-center gap-1 border border-yellow-600/60 rounded-full px-4 py-1.5 text-sm font-medium">
+          <div className="inline-flex w-fit items-center gap-1 border border-[#D5A310]/60 rounded-full px-4 py-1.5 text-sm font-medium">
             <span className="text-[#D5A310] font-semibold">About</span>
             <span className="text-white">Us</span>
           </div>

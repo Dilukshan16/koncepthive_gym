@@ -81,11 +81,11 @@ export default function Footer() {
               <input
                 type="email"
                 placeholder="Enter your email"
-                className="flex-1 bg-transparent border border-yellow-700/60 rounded-l-md px-4 py-3 text-sm text-gray-300 placeholder-gray-500 focus:outline-none focus:border-yellow-500 transition-colors"
+                className="flex-1 bg-transparent border border-[#D5A310]/60 rounded-l-md px-4 py-3 text-sm text-gray-300 placeholder-gray-500 focus:outline-none focus:border-yellow-500 transition-colors"
               />
               <button
                 type="button"
-                className="px-5 py-3 text-white text-sm font-bold tracking-wider rounded-r-md hover:opacity-90 transition-opacity"
+                className="px-5 py-3 text-white text-sm font-bold tracking-wider rounded-r-md hover:opacity-90 transition-opacity cursor-pointer"
                 style={{ background: "#7a6200" }}
               >
                 SUBMIT
