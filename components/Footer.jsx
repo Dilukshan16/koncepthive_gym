@@ -73,7 +73,7 @@ export default function Footer() {
           </div>
 
           {/* newsletter */}
-          <div className="flex flex-col gap-5">
+          <div className="flex flex-col gap-5 ml-[-15px] md:ml-[-80px] lg:ml-0">
             <h4 className="text-white text-base font-semibold">
               Stay Up To Date
             </h4>
