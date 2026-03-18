@@ -1,6 +1,6 @@
 export default function Hero() {
   return (
-    <section className="relative h-screen flex items-center justify-center bg-black text-white overflow-hidden">
+    <section id="home" className="relative h-screen flex items-center justify-center bg-black text-white overflow-hidden">
       {/* Image */}
       <div className="absolute inset-0 ">
         <img

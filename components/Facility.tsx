@@ -9,7 +9,7 @@ export default function Facility() {
   ];
 
   return (
-    <section className="bg-black text-white py-24 px-6 md:px-16">
+    <section id="facility" className="bg-black text-white py-24 px-6 md:px-16">
       <div className="max-w-6xl mx-auto flex flex-col items-center gap-16">
         {/* badge */}
         <div className="inline-flex items-center gap-1 border border-[#D5A310]/70 rounded-full px-5 py-1.5 text-sm font-medium">
