@@ -12,6 +12,9 @@ export default function Home() {
       <Hero/>
       <About/>
       <Services/>
+      <Facility/>
+      <Membership/>
+      <Contact/>
     </div>
   );
 }
