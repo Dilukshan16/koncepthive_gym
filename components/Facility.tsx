@@ -1,3 +1,5 @@
+"use client";
+import { motion } from "framer-motion";
 export default function Facility() {
   const images = [
     { src: "/images/fac1.png", alt: "  rack" },
@@ -18,20 +20,35 @@ export default function Facility() {
         </div>
 
         {/* image gallery */}
-        <div className="grid grid-cols-3 gap-4 w-full">
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          variants={{
+            hidden: {},
+            visible: {
+              transition: { staggerChildren: 0.15 },
+            },
+          }}
+          className="grid grid-cols-3 gap-4 w-full"
+        >
           {images.map((img) => (
-            <div
+            <motion.div
+              variants={{
+                hidden: { opacity: 0, scale: 0.9 },
+                visible: { opacity: 1, scale: 1 },
+              }}
               key={img.alt}
-              className="overflow-hidden rounded-1xl aspect-[4/3]"
+              className="relative overflow-hidden aspect-[4/3] group"
             >
               <img
                 src={img.src}
                 alt={img.alt}
-                className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
+                className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500 group-hover:rotate-1"
               />
-            </div>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   );
