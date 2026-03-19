@@ -12,16 +12,30 @@
 1. **Clone the repository**
 ```bash
 git clone https://github.com/your-username/gym-website.git
-cd gym-website
+cd gym-websitez
+```
 
 2. **Install dependencies**
 ```bash
 npm install
+```
 
 3. **Start Development Server**
 ```bash
 npm run dev
+```
 
 4. **Production Build**
 ```bash
 npm run build
+```
+
+## Live Link
+```bash
+https://koncepthive.netlify.app/
+```
+
+## Figma Link
+```bash
+https://www.figma.com/design/ublbj95wJ8OgkAGkCM2zXi/kocepthive_gym?node-id=0-1&t=nJ8mwtAtck5Y3hvm-1
+```
