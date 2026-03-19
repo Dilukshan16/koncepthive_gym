@@ -1,10 +1,16 @@
 "use client";
 import toast from "react-hot-toast";
-
+import { useState } from "react";
 export default function Contact() {
+  const [loading, setLoading] = useState(false);
+  const [errors, setErrors] = useState<{ [key: string]: string }>({});
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     const formData = new FormData(e.currentTarget);
+    setErrors({});
+
+    setLoading(true);
+
     const response = await fetch("https://api.web3forms.com/submit", {
       method: "POST",
       headers: {
@@ -18,6 +24,7 @@ export default function Contact() {
         message: formData.get("message"),
       }),
     });
+    setLoading(false);
     const result = await response.json();
     if (result.success) {
       toast.success("Message sent successfully!");
@@ -29,7 +36,7 @@ export default function Contact() {
   return (
     <section id="contact" className="bg-black text-white py-24 px-6 md:px-16">
       <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-6">
-        {/* get in touch card */}
+        {/* get in touch  */}
         <div
           className="rounded-2xl px-12 py-16 flex flex-col justify-center gap-10"
           style={{ border: "1px solid rgba(161, 120, 0, 0.4)" }}
@@ -67,7 +74,7 @@ export default function Contact() {
           </div>
         </div>
 
-        {/* form card */}
+        {/* form */}
         <div
           className="rounded-2xl px-10 py-12 flex flex-col gap-6"
           style={{ border: "1px solid rgba(161, 120, 0, 0.4)" }}
@@ -83,14 +90,20 @@ export default function Contact() {
                 placeholder="Name"
                 name="name"
                 required
-                className="bg-transparent border border-gray-700 rounded-xl px-5 py-4 text-sm text-gray-300 placeholder-gray-500 focus:outline-none focus:border-yellow-700 transition-colors"
+                minLength={3}
+                pattern="^[A-Za-z\s]+$"
+                title="Name should contain only letters"
+                className="bg-transparent border border-gray-700 rounded-xl px-5 py-4 text-sm text-gray-300 placeholder-gray-500 focus:outline-none focus:border-yellow-700 transition-colors
+                focus:shadow-[0_0_10px_rgba(213,163,16,0.3)] transition-all"
               />
+
               <input
                 type="email"
                 placeholder="Email"
                 name="email"
                 required
-                className="bg-transparent border border-gray-700 rounded-xl px-5 py-4 text-sm text-gray-300 placeholder-gray-500 focus:outline-none focus:border-yellow-700 transition-colors"
+                className="bg-transparent border border-gray-700 rounded-xl px-5 py-4 text-sm text-gray-300 placeholder-gray-500 focus:outline-none focus:border-yellow-700 transition-colors
+                focus:shadow-[0_0_10px_rgba(213,163,16,0.3)] transition-all"
               />
             </div>
 
@@ -98,8 +111,10 @@ export default function Contact() {
               placeholder="Message..."
               name="message"
               required
+              minLength={10}
               rows={7}
-              className="bg-transparent border border-gray-700 rounded-xl px-5 py-4 text-sm text-gray-300 placeholder-gray-500 focus:outline-none focus:border-yellow-700 transition-colors resize-none"
+              className="bg-transparent border border-gray-700 rounded-xl px-5 py-4 text-sm text-gray-300 placeholder-gray-500 focus:outline-none focus:border-yellow-700 transition-colors resize-none
+              focus:shadow-[0_0_10px_rgba(213,163,16,0.3)] transition-all"
             />
 
             {/*  Button */}
@@ -111,7 +126,14 @@ export default function Contact() {
                   "linear-gradient(135deg, #7a6000 0%, #b8960c 50%, #7a6000 100%)",
               }}
             >
-              Send now
+              {loading ? (
+                <div className="flex items-center justify-center gap-2">
+                  <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
+                  Sending...
+                </div>
+              ) : (
+                "Send now"
+              )}
             </button>
           </form>
         </div>
