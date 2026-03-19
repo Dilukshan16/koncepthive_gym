@@ -13,3 +13,15 @@
 ```bash
 git clone https://github.com/your-username/gym-website.git
 cd gym-website
+
+2. **Install dependencies**
+```bash
+npm install
+
+3. **Start Development Server**
+```bash
+npm run dev
+
+4. **Production Build**
+```bash
+npm run build
