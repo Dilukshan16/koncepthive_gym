@@ -1,14 +1,18 @@
+"use client";
+import { motion } from "framer-motion";
 export default function Membership() {
   const plans = [
     {
       title: "Monthly",
       price: "$20",
       features: ["Full Gym Access", "Locker Room Access"],
+      popular: "Basic"
     },
     {
       title: "06 Months",
       price: "$40",
       features: ["Full Gym Access", "Locker Room Access", "Community Benefits"],
+      popular: "Most Popular",
     },
     {
       title: "Annual",
@@ -19,6 +23,7 @@ export default function Membership() {
         "Community Benefits",
         "Free Guest Passes",
       ],
+      popular: "Best Value",
     },
   ];
 
@@ -32,9 +37,24 @@ export default function Membership() {
         </div>
 
         {/* Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 w-full">
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          variants={{
+            hidden: {},
+            visible: {
+              transition: { staggerChildren: 0.2 },
+            },
+          }}
+          className="grid grid-cols-1 md:grid-cols-3 gap-6 w-full"
+        >
           {plans.map((plan) => (
-            <div
+            <motion.div
+              variants={{
+                hidden: { opacity: 0, y: 60 },
+                visible: { opacity: 1, y: 0 },
+              }}
               key={plan.title}
               className="relative rounded-2xl overflow-hidden px-10 py-14 flex flex-col gap-10"
               style={{
@@ -49,9 +69,12 @@ export default function Membership() {
               </h3>
 
               {/* Price */}
-              <p className="text-yellow-500 text-5xl font-extrabold">
+              <motion.p
+                whileHover={{ scale: 1.1 }}
+                className="text-yellow-500 text-5xl font-extrabold"
+              >
                 {plan.price}
-              </p>
+              </motion.p>
 
               <div className="h-px bg-[#D5A310]/30 w-full" />
 
@@ -67,9 +90,13 @@ export default function Membership() {
                   </li>
                 ))}
               </ul>
-            </div>
+
+              <div className="absolute top-4 right-4 bg-[#D5A310] text-black text-xs font-bold px-3 py-1 rounded-full">
+                {plan.popular}
+              </div>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   );
